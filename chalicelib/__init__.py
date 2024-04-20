@@ -32,7 +32,7 @@ class Storage:
         environment variable has been set. For local testing, a value should
         be manually set in the environment if '' will not suffice.
         """
-        table_name = os.environ.get("TABLE", "OttuWsNotify")
+        table_name = os.environ.get("TABLE", "Notify")
         table = boto3.resource("dynamodb").Table(table_name)
         return cls(table)
 
@@ -84,7 +84,6 @@ class Storage:
         creating a partition called room_{room}. Everything in that
         partition is a connection in the room.
 
-        :param merchant_id: merchant id, ie: ksa.ottu.dev.
         :param ref: reference name to get all connection ids from.
         :param user_id: user id to send message to specific user
         """
@@ -208,7 +207,7 @@ class Handler:
         """
         self._storage = storage
         self._sender = sender
-        table_name = os.environ.get("TABLE", "OttuWsNotify")
+        table_name = os.environ.get("TABLE", "Notify")
         self._table = boto3.resource("dynamodb").Table(table_name)
 
     def handle(self, connection_id, message=None):

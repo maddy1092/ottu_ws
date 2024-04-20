@@ -17,11 +17,11 @@ user_id = "72"
 user_ids = ["72"]
 connection_id = "1092"
 ts = "1092387456"
-merchant_id = "staging.ottu.dev"
+merchant_id = "testing.dev"
 type = "frontend"
 backend_data = {
     "id": {
-        "merchant_id": "staging4.ottu.dev",
+        "merchant_id": "testing.dev",
         "client": "core_backend",
         "type": "backend",
     },
@@ -34,7 +34,7 @@ backend_data = {
             "id": 18,
             "status": "FINISHED",
             "type": "Payment request",
-            "file": "https://staging4.ottu.dev/media/exported_report_18.csv",
+            "file": "https://testing.dev/media/exported_report_18.csv",
             "size": 25562,
             "file_format": "csv",
             "records_amount": 29,
@@ -84,7 +84,7 @@ class TestMainHandler:
         STORAGE._table.scan = Mock()
         STORAGE._table.scan.return_value = {
             "Items": [
-                {"PK": "1092", "merchant_id": "staging_ottu_dev", "user_id": "72"}
+                {"PK": "1092", "merchant_id": "testing", "user_id": "72"}
             ],
             "start_key": None,
         }

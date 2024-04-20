@@ -49,7 +49,7 @@ import websocket
 import json
 ws_notify_url = ""
 payload_dict = {
-            "merchant_id": "ksa.ottu.dev",
+            "merchant_id": "merchant_id",
             "client": "backend",
             "project": "repo-name",
             "type": "report.Task",
@@ -84,7 +84,7 @@ socket.addEventListener('message', function (event) {
     }
 });
 
-socket.send('{"merchant_id": "ksa.ottu.dev",
+socket.send('{"merchant_id": "merchant_id",
             "client": "backend",
             "project": "repo-name",
             "type": "report.Task",
@@ -95,7 +95,7 @@ socket.send('{"merchant_id": "ksa.ottu.dev",
 
 //On next iteration
 socket.addEventListener('open', function (event) {
-    socket.send('{"merchant_id": "ksa.ottu.dev",
+    socket.send('{"merchant_id": "merchant_id",
             "client": "backend",
             "project": "repo-name",
             "type": "report.Task",
@@ -122,7 +122,7 @@ SENDER = Sender(app, STORAGE)
 HANDLER = Handler(STORAGE, SENDER)
 
 ## To create a connection in DynamoDB
-STORAGE.create_connection("3", '{"merchant_id": "ksa.ottu.dev",
+STORAGE.create_connection("3", '{"merchant_id": "merchant_id",
                           "client": "backend",
                           "project": "repo-name",
                           "type": "report.Task",
@@ -132,10 +132,10 @@ STORAGE.create_connection("3", '{"merchant_id": "ksa.ottu.dev",
 
                           
 ## To delete a connection from DynamoDB
-STORAGE.delete_connection('{"merchant_id": "ksa.ottu.dev","ref":"12303"}')
+STORAGE.delete_connection('{"merchant_id": "merchant_id","ref":"12303"}')
 
 ##To pass a message
-HANDLER.handle("1", '{"merchant_id": "ksa.ottu.dev",
+HANDLER.handle("1", '{"merchant_id": "merchant_id",
                 "client": "backend",
                 "project": "repo-name",
                 "type": "report.Task",
@@ -147,18 +147,18 @@ HANDLER.handle("1", '{"merchant_id": "ksa.ottu.dev",
 ## For Frontend Use
 
 # Websocket connect
-wss://2s6of7bgr5.execute-api.ap-south-1.amazonaws.com/dev/connect
+wss://121212.execute-api.ap-south-1.amazonaws.com/dev/connect
 
 # Websocket disconnect
-wss://2s6of7bgr5.execute-api.ap-south-1.amazonaws.com/dev/disconnect
+wss://121212.execute-api.ap-south-1.amazonaws.com/dev/disconnect
 
 # Websocket send message
-wss://2s6of7bgr5.execute-api.ap-south-1.amazonaws.com/dev/default
+wss://121212.execute-api.ap-south-1.amazonaws.com/dev/default
 
 # Required Payload
 ```
 {
-    "merchant_id": "ksa.ottu.dev",
+    "merchant_id": "merchant_id",
     "client": "frontend" // or backend
     "project": "repo-name", //
     "type": "report.Task", // app_name.Model if db related, else a unique type, like report_task
