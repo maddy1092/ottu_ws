@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip install -U chalice
+
+  build:
+    commands:
+      - export AWS_DEFAULT_REGION=eu-west-1
+      - export BUCKET=${env_name}-ottu-websocket
+      - export STACK=${env_name}-ottu-websocket
+      - chalice package --merge-template resources.json out --stage ${env_stage}
+      - aws cloudformation package  --template-file out/sam.json --s3-bucket $BUCKET --output-template-file out/template.yml
+      - aws cloudformation deploy --template-file out/template.yml --stack-name $STACK --capabilities CAPABILITY_IAM
+
